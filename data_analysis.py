@@ -251,7 +251,6 @@ def analyse_data():
     plot_total_counts(detected_list, detector_lengths_mm)
     plot_complex(complex_list, detector_lengths_mm)
     plot_site_coords(xi_list, yi_list, zi_list, detector_lengths_mm, actual_site)
-    plot_seaborn(detector_lengths_mm, complex_list, scatters_list, randoms_list, trues_list, necr_list, detected_list, xi_list, yi_list, zi_list, actual_site)
 
 
 def full_body_decays():
