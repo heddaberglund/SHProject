@@ -200,7 +200,7 @@ def analyse_data():
 
     #loop over all files and collect data
     for i in range(27):
-        file_path = files[i] + ".csv"
+        file_path = "data/" + files[i] + ".csv"
         data = file_reader(file_path)
         detected_counts, true_counts, scatter_counts, random_counts, complex_counts, necr, event_coords = get_data(data)
         complex_list.append(complex_counts)
@@ -255,7 +255,7 @@ def analyse_data():
 
 
 def full_body_decays():
-    filepath = "wholebodyhits.csv"
+    filepath = "data/wholebodyhits.csv"
     data = file_reader(filepath)
     detected_counts, true_counts, scatter_counts, random_counts, complex_counts, necr, event_coords = get_data(data)
     total_counts = detected_counts + true_counts + scatter_counts + random_counts + complex_counts
@@ -275,7 +275,7 @@ def z_axis_decays():
     note: this data is from the cylindrical phantom so NECR values will not be comparable to other data, 
     only rly use this for decay site comparison
     """
-    filepath = "hits_linear_source.csv"
+    filepath = "data/hits_linear_source.csv"
     data = file_reader(filepath)
     detected_counts, true_counts, scatter_counts, random_counts, complex_counts, necr, event_coords = get_data(data)
     total_counts = detected_counts + true_counts + scatter_counts + random_counts + complex_counts
@@ -284,7 +284,7 @@ def z_axis_decays():
     print("Estimated decay site from z-axis source data:", event_coords)
 
 def both_breast_decays():
-    filepath = "bothbreasthits.csv"
+    filepath = "data/bothbreasthits.csv"
     data = file_reader(filepath)
     detected_counts, true_counts, scatter_counts, random_counts, complex_counts, necr, event_coords = get_data(data)
     total_counts = detected_counts + true_counts + scatter_counts + random_counts + complex_counts
