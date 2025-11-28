@@ -106,3 +106,11 @@ def plot_necr(ns, lengths):
     plt.ylabel('NEC')
     
     plt.show()
+
+def plot_necr_rates(necr_rates, lengths):
+    plt.plot(lengths, necr_rates)
+    plt.title('NECR Rate vs Detector Length')
+    plt.xlabel('Detector Length (mm)')
+    plt.ylabel('NECR Rate (Mcps)')
+    
+    plt.show()

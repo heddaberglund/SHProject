@@ -53,6 +53,11 @@ def find_necr(t,s,r,k):
     """Calculate NECR given true (t), scatter (s), random (r) counts, and scale factor k."""
     return (t*t) / (t + s + k*r)
 
+def necr_as_rate(necr, dose, simulated_counts):
+    #rate in MBq
+    rate = necr * dose / simulated_counts
+    return rate
+
 def find_LOR(event):
     """
     finds line of response from two hits, very similar to find_angle so could be made into 
@@ -198,6 +203,9 @@ def analyse_data():
     complex_list = []
     event_coords_list = []
 
+    necr_rates = []
+    dose = 400 #MBq
+
     #loop over all files and collect data
     for i in range(27):
         file_path = "data/" + files[i] + ".csv"
@@ -210,6 +218,9 @@ def analyse_data():
         randoms_list.append(random_counts)
         detected_list.append(detected_counts)
         event_coords_list.append(event_coords)
+
+        necr_rate = necr_as_rate(necr, dose, detected_counts)
+        necr_rates.append(necr_rate)
     
     
     #for estimated decay site analysis:
@@ -246,6 +257,7 @@ def analyse_data():
         #print(f"Difference from actual site: {compute_decay_site_difference(event_coords_list[i], actual_site)}")
 
     plot_necr(necr_list, detector_lengths_mm)
+    plot_necr_rates(necr_rates, detector_lengths_mm)
     plot_trues(trues_list, detector_lengths_mm)
     plot_all_counts(trues_list, scatters_list, randoms_list, complex_list, detector_lengths_mm)
     plot_total_counts(detected_list, detector_lengths_mm)
